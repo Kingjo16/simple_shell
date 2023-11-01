@@ -29,4 +29,3 @@ int print_char(char fe)
 	return (1);
 }
 
-

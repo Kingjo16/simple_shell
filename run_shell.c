@@ -10,10 +10,10 @@ void init_data(shell_data *data)
 
 int is_interactive(shell_data *data)
 {
-	return (isatty(STDIN_FILENO) && data->readfile <= 2)
+	return (isatty(STDIN_FILENO) && data->readfile <= 2);
 }
 
-int run_shell(shell_dtat *data, char **argVal)
+int run_shell(shell_data *data, char **argVal)
 {
 	ssize_t file = 0;
 	int inside = 0;
@@ -22,5 +22,8 @@ int run_shell(shell_dtat *data, char **argVal)
 	{
 		init_data(data);
 		if (is_interactive(data))
+			_prints("$ ");
+		print_char(FLUSH);
+		file = 
 
 

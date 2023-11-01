@@ -1,15 +1,15 @@
 #include "memory.h"
 
-char str_copy(char *destination,char *str_copy)
+char *str_copy(char *destination, char *stringc)
 {
 	int m = 0;
 	
-	if (destination == str_copy || str_copy == 0)
+	if (destination == stringc || stringc == 0)
 		return (destination);
 	
-	while (str_copy[m])
+	while (stringc[m])
 	{
-		destination[m] = str_copy[m];
+		destination[m] = stringc[m];
 		m++;
 	}
 
