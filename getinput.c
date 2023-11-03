@@ -8,17 +8,17 @@ void handle_signal(__attribute__((unused))int signal_number)
 
 ssize_t into_buf(shell_data *data, char *buffer, size_t *index)
 {
-	ssize_t read = 0;
+	ssize_t re = 0;
 
 	if (*index)
 		return (0);
 
-	r = read(data->readfile, buffer, BUFFER_SIZES);
+	re = read(data->readfile, buffer, BUFFER_SIZES);
 
-	if (read >= 0)
-		*index = read;
+	if (re >= 0)
+		*index = re;
 
-	return (read);
+	return (re);
 }
 
 ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
@@ -41,7 +41,7 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 		{
 			if ((*buffer)[bytes_read - 1] == '\n')
 			{
-				(*buffer[bytes_read - 1] = '\0';
+				(*buffer)[bytes_read - 1] = '\0';
 				 bytes_read--;
 			}
 
@@ -49,7 +49,7 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 			comment_rm(*buffer);
 			{
 			*num = bytes_read;
-			info->command_buffer = buffer;
+			data->command_buffer = buffer;
 			}
 		}
 	}
@@ -73,7 +73,7 @@ int custom_getline(shell_data *data, char **pointer, size_t *len)
 	if (m == num)
 		m = num = 0;
 
-	q = info_buf(data, buffer, &num);
+	q = into_buf(data, buffer, &num);
 
 	if (q == -1 || (q == 0 && num == 0))
 		return (-1);

@@ -16,12 +16,12 @@ ssize_t find_input(shell_data *data)
 		l = m;
 		p = buffer + m;
 
-		check_com_chain(data, buffer, &l, num);
+		check_com_chain(data, buffer, &l, m, num);
 		while (l < num)
 		{
-			if (command_chain(daya, buffer, &l))
+			if (command_chain(data, buffer, &l))
 				break;
-			l++
+			l++;
 		}
 
 		m = l + 1;
@@ -34,13 +34,12 @@ ssize_t find_input(shell_data *data)
 		*buf = p;
 		return (str_length(p));
 	}
-
-	buf = buffer;
+	*buf = buffer;
 	return (br);
 }
 
 
-void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, szie_t d)
+void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d)
 {
 	size_t l = *q;
 
@@ -56,7 +55,7 @@ void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, szie_t d)
 	{
 		if (!data->status)
 		{
-			buffer[m] = 0;
+			b[m] = 0;
 			l = d;
 		}
 	}

@@ -34,6 +34,6 @@ int main(int argCount, char **argVal)
 		}
 		data->readfile = file_dis;
 	}
-	run_shell(data, argVal);
+	run_shell(data);
 	return (SUCCESS);
 }

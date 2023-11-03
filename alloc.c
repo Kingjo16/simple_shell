@@ -1,11 +1,11 @@
 #include "memory.h"
 
-char *memset(char *string, char c, unsigned int num)
+char *mem_set(char *string, char c, unsigned int num)
 {
 	unsigned int index;
 
 	for (index = 0; index < num; index++)
-		string[m] = c;
+		string[index] = c;
 
 	return (string);
 }

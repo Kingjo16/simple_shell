@@ -46,7 +46,7 @@ char *concat_str(char *destination, char *s_string, int cpy)
 	return (dest);
 }
 
-char char_loc(char *dest, char ch)
+char *char_loc(char *dest, char ch)
 {
 	do {
 		if (*dest == ch)
