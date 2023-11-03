@@ -24,6 +24,10 @@ int run_shell(shell_data *data, char **argVal)
 		if (is_interactive(data))
 			_prints("$ ");
 		print_char(FLUSH);
-		file = 
+		file = find_input(data);
+		if (file != -1)
+	}
+}
+
 
 

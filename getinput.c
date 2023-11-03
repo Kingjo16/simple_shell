@@ -37,7 +37,25 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 #else
 		bytes_read = custom_getline(data, buffer, &allocate_buf_len);
 #endif
-		if  (bytes_read > 0)
+		if (bytes_read > 0)
+		{
+			if ((*buffer)[bytes_read - 1] == '\n')
+			{
+				(*buffer[bytes_read - 1] = '\0';
+				 bytes_read--;
+			}
+
+			data->flag_count = 1;
+			comment_rm(*buffer);
+			{
+			*num = bytes_read;
+			info->command_buffer = buffer;
+			}
+		}
+	}
+	return (bytes_read);
+}
+
 
 
 int custom_getline(shell_data *data, char **pointer, size_t *len)
@@ -62,4 +80,32 @@ int custom_getline(shell_data *data, char **pointer, size_t *len)
 
 	l = char_loc(buffer + m, '\n');
 	k = l ? 1 + (unsigned int)(l - buffer) : num;
-	buf_p = 
+	buf_p = alloc(p, s, s ? s + k : k + 1);
+	if (!buf_p)
+		return (p ? free(p), -1 : -1);
+
+	if (s)
+		concat_str(buf_p, buffer + m, k - m);
+	else
+		copy_str(buf_p, buffer + m, k - m + 1);
+
+	s += k - m;
+	m = k;
+	p = buf_p;
+
+	if (len)
+		*len = s;
+	*pointer = p;
+	return (s);
+}
+void comment_rm(char *buffer)
+{
+	int m;
+	
+	for (m = 0; buffer[m] != '\0'; m++)
+		if (buffer[m] == '#' && (!m || buffer[m - 1] == ' '))
+		{
+			buffer[m] = '\0';
+			break;
+		}
+}

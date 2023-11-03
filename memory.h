@@ -49,6 +49,24 @@ char *str_dup(const char *string);
 void _prints(char *string);
 int _printchar(char character);
 
+/* alloc.c */
+
+char *memset(char *string, char c, unsigned int num);
+void free_strings(char **strings);
+void *alloc(void *ptr, unsigned int used_s, unsigned int given_s);
+
+/* cahr_exitsearch.c */
+
+char *copy_str(char *destination, char *s_string, int cpy);
+char *concat_str(char *destination, char *s_string, int cpy);
+char char_loc(char *dest, char ch);
+
+/* getinput.c */
+
+void handle_signal(__attribute__((unused))int signal_number);
+ssize_t into_buf(shell_data *data, char *buffer, size_t *index);
+ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num);
+int custom_getline(shell_data *data, char **pointer, size_t *len);
 
 
 #endif
