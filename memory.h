@@ -17,10 +17,23 @@
 #define SUCCESS 0
 #define FAILURE 1
 
+#define ENTERANCE	0
+
+#define LOWERCASE	1
+#define UNDIGNED_CON	2
+
 #define NORM_COMMAND	0
 #define OR_COMMAND	1
 #define AND_COMMAND	2
 #define CHAIN_COMMAND	3
+
+
+typedef struct nodelist
+{
+	char *str_t;
+	struct nodelist *next;
+} node_list;
+
 
 typedef struct shell_data
 {
@@ -29,9 +42,13 @@ typedef struct shell_data
 	char *path;
 	int argu_count;
 	int flag_count;
+	char *command_name;
+	node_list *envir;
+	node_list *other_a;
+	int status;
+
 	char **command_buffer;
 	int command_type;
-	int status;
 	int readfile;
 
 } shell_data;
