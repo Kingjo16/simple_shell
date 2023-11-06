@@ -49,7 +49,7 @@ int print_char(char fe);
 
 void init_data(shell_data *data);
 int is_interactive(shell_data *data);
-int run_shell(shell_data *data);
+int run_shell(shell_data *data, char **arg);
 
 /* string_man.c */
 
@@ -85,6 +85,29 @@ void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d);
 int command_chain(shell_data *data, char *buffer, size_t *q);
 int str_length(char *string);
 
+/* information_set.c */
+
+void set_command_data(shell_data *data, char ** argVal);
+char **split_str(char *s, char *del);
+int del_check(char char_delim, char *del);
+int string_cmd_replace(char **replaced, char *new);
+
+/* number_converter.c */
+
+char *number_base_con(long int num, int b, int flag);
+
+/* replacer.c */
+
+int cmd_alias_replace(shell_data *data);
+node_list *find_node(node_list *knob, char  *fixer, char ch);
+char *enter_here(const char *str, const char *prefix);
+int cmd_var_replace(shell_data *data);
+
+/* string_cpy.c */
+
+int length_str(char *string);
+int compar_str(char *o_ne, char *t_wo);
+char cat_str(char *buf, char *sour);
 
 
 #endif
