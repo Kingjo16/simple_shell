@@ -27,7 +27,7 @@ int compar_str(char *o_ne, char *t_wo)
 		return (*o_ne < *t_wo ? -1 : 1);
 }
 
-char cat_str(char *buf, char *sour)
+char *cat_str(char *buf, char *sour)
 {
 	char *k = buf;
 

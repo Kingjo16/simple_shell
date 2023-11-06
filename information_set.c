@@ -19,7 +19,7 @@ void set_command_data(shell_data *data, char ** argVal)
 			}
 		}
 
-		for (a_index; data->argu_val && data->argu_val[a_index]; a_index++)
+		for (a_index = 0; data->argu_val && data->argu_val[a_index]; a_index++)
 			;
 		data->argu_count = a_index;
 
@@ -79,8 +79,12 @@ char **split_str(char *s, char *del)
 int del_check(char char_delim, char *del)
 {
 	while (*del)
+	{
 		if (*del++ == char_delim)
+		{
 			return (1);
+		}
+	}
 
 		return (0);
 }

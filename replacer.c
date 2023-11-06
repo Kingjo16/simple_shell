@@ -12,7 +12,7 @@ int cmd_alias_replace(shell_data *data)
 		if (!knob)
 			return (0);
 		free(data->argu_val[0]);
-		q = char_loc(data->str_t, '=');
+		q = char_loc(knob->str_t, '=');
 		if (!q)
 			return (0);
 		q = str_dup(q + 1);
@@ -27,11 +27,13 @@ node_list *find_node(node_list *knob, char  *fixer, char ch)
 {
 	char *q = NULL;
 
-	while (knob);
+	while (knob)
 	{
 		q = enter_here(knob->str_t, fixer);
 		if (q && ((ch = -1) || (*q == ch)))
+		{
 			return (knob);
+		}
 		knob = knob->next;
 	}
 	return (NULL);
@@ -49,9 +51,9 @@ int cmd_var_replace(shell_data *data)
 	int m = 0;
 	node_list *knob;
 
-	for (m = 0; data->argu_var[m]; m++)
+	for (m = 0; data->argu_val[m]; m++)
 	{
-		if (data->argu_var[m][0] != '$' || !data->argu_val[m][1])
+		if (data->argu_val[m][0] != '$' || !data->argu_val[m][1])
 			continue;
 
 		if (!compar_str(data->argu_val[m], "$?"))
@@ -63,7 +65,7 @@ int cmd_var_replace(shell_data *data)
 		if (!compar_str(data->argu_val[m], "$$"))
 		{
 			string_cmd_replace(&(data->argu_val[m]),
-					str_dup(number_base_con(getpid, 10, 0)));
+					str_dup(number_base_con(getpid(), 10, 0)));
 			continue;
 		}
 		knob = find_node(data->envir, &data->argu_val[m][1], '=');

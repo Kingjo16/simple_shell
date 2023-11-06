@@ -27,10 +27,8 @@ int run_shell(shell_data *data, char **arg)
 		file = find_input(data);
 		if (file != -1)
 		{
-			set_command_data(data, arg);
-	}
+		set_command_data(data, arg);
+		}
+	}	
 	return (1);
 }
-
-
-

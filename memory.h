@@ -20,7 +20,7 @@
 #define ENTERANCE	0
 
 #define LOWERCASE	1
-#define UNDIGNED_CON	2
+#define UNSIGNED_CON	2
 
 #define NORM_COMMAND	0
 #define OR_COMMAND	1
@@ -124,7 +124,7 @@ int cmd_var_replace(shell_data *data);
 
 int length_str(char *string);
 int compar_str(char *o_ne, char *t_wo);
-char cat_str(char *buf, char *sour);
+char *cat_str(char *buf, char *sour);
 
 
 #endif
