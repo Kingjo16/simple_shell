@@ -13,7 +13,7 @@ int is_interactive(shell_data *data)
 	return (isatty(STDIN_FILENO) && data->readfile <= 2);
 }
 
-int run_shell(shell_data *data)
+int run_shell(shell_data *data, char **arg)
 {
 	ssize_t file = 0;
 	int inside = 0;
@@ -25,7 +25,9 @@ int run_shell(shell_data *data)
 			_prints("$ ");
 		print_char(FLUSH);
 		file = find_input(data);
-
+		if (file != -1)
+		{
+			set_command_data(data, arg);
 	}
 	return (1);
 }
