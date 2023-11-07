@@ -28,7 +28,14 @@ int run_shell(shell_data *data, char **arg)
 		if (file != -1)
 		{
 		set_command_data(data, arg);
+		inside = 
 		}
 	}	
 	return (1);
 }
+
+int builtin_cmd(shell_data *data)
+{
+	int m, function_built = -1;
+	function_built builtedfun[] = {
+		{"exit", 

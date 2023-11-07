@@ -27,4 +27,24 @@ char *number_base_con(long int num, int b, int flag)
 		*--points = s;
 	return (points);
 }
+int string_to_int(char *str)
+{
+	int m = 0;
+	unsigned long int list = 0;
 
+	if (*str == '+')
+		str++;
+	for (m = 0; str[m] != '\0'; m++)
+	{
+		if (str[m] >= '0' && str[m] <= '9')
+		{
+			list *= 10;
+			list += (str[m] - '0');
+			if (list > INT_MAX)
+				return (-1);
+		}
+		else
+			return (-1);
+	}
+	return (list);
+}

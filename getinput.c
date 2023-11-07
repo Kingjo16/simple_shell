@@ -47,16 +47,16 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 
 			data->flag_count = 1;
 			comment_rm(*buffer);
+			add_to_history(data, *buffer, data->count_hist++);
 			{
 			*num = bytes_read;
 			data->command_buffer = buffer;
 			}
+
 		}
 	}
 	return (bytes_read);
 }
-
-
 
 int custom_getline(shell_data *data, char **pointer, size_t *len)
 {
