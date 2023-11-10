@@ -30,7 +30,7 @@ int env_set(shell_data *data, char *index, char *v)
 	}
 	insert_endnode(&(data->envir), b, 0);
 	free(b);
-	data_>change_env = 1;
+	data->change_env = 1;
 	return (0);
 }
 

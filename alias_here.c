@@ -42,7 +42,7 @@ int aliasunset(shell_data *data, char *var)
 	cap = *q;
 	*q = 0;
 	k = index_del(&(data->alias_t),
-			index_node(data->alias_t, find_node(data->alias_t, var, -1)));
+			index_knob(data->alias_t, find_node(data->alias_t, var, -1)));
 	*q = cap;
 	return (k);
 }
@@ -55,7 +55,7 @@ ssize_t index_knob(node_list *enter, node_list *knob)
 		if (enter == knob)
 			return (m);
 		enter = enter->next;
-		m+=;
+		m++;
 	}
 	return (-1);
 }

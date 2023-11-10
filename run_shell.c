@@ -39,7 +39,7 @@ int run_shell(shell_data *data, char **arg)
 
 int builtin_cmd(shell_data *data)
 {
-	int m, function_built = -1;
+	int m, fun_built = -1;
 	function_built builtedfun[] = {
 		{"exit", exit_shell},
 		{"env", env_center},
@@ -56,10 +56,10 @@ int builtin_cmd(shell_data *data)
 		if (compar_str(data->argu_val[0], builtedfun[m].type) == 0)
 		{
 			data->check_line++;
-			function_built = builtedfun[m].bfun(data);
+			fun_built = builtedfun[m].bfun(data);
 			break;
 		}
-	return (function_built);
+	return (fun_built);
 }
 
 

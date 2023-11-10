@@ -1,6 +1,6 @@
 #include "memory.h"
 
-void erro_message(shell_data *data, char *error_t)
+void error_message(shell_data *data, char *error_t)
 {
 	print_str(data->command_name);
 	print_str(": ");

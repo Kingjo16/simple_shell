@@ -31,6 +31,7 @@
 typedef struct nodelist
 {
 	char *str_t;
+	int place;
 	struct nodelist *next;
 } node_list;
 
@@ -41,21 +42,33 @@ typedef struct shell_data
 	char **argu_val;
 	char *path;
 	int argu_count;
+	unsigned int check_line;
+	int num_error;
 	int flag_count;
 	char *command_name;
 	node_list *envir;
+	node_list *history;
 	node_list *other_a;
+	node_list *alias_t;
+	int change_env;
 	int status;
 
 	char **command_buffer;
 	int command_type;
 	int readfile;
+	int count_hist;
 
 } shell_data;
 
 #define INFORMATION_INITIALIZE {0}
 
 #define FLUSH -1
+
+typedef struct builtedfun
+{
+	char *type;
+	int (*bfun)(shell_data *);
+} function_built;
 
 /* error_output.c */
 
@@ -67,6 +80,7 @@ int print_char(char fe);
 void init_data(shell_data *data);
 int is_interactive(shell_data *data);
 int run_shell(shell_data *data, char **arg);
+int builtin_cmd(shell_data *data);
 
 /* string_man.c */
 
@@ -112,6 +126,7 @@ int string_cmd_replace(char **replaced, char *new);
 /* number_converter.c */
 
 char *number_base_con(long int num, int b, int flag);
+int string_to_int(char *str);
 
 /* replacer.c */
 
@@ -125,6 +140,48 @@ int cmd_var_replace(shell_data *data);
 int length_str(char *string);
 int compar_str(char *o_ne, char *t_wo);
 char *cat_str(char *buf, char *sour);
+char *_starting(const char *bags,const char *smaller);
+
+/* alias_here.c */
+
+int _printal(node_list *knob);
+int aliaset(shell_data *data, char *var);
+int aliasunset(shell_data *data, char *var);
+ssize_t index_knob(node_list *enter, node_list *knob);
+
+/* print_error_message.c */
+
+void error_message(shell_data *data, char *error_t);
+int prints_int(int numbers, int d_file);
+
+/* set_environment.c */
+
+int env_set(shell_data *data, char *index, char *v);
+int env_center(shell_data *data);
+size_t print_string_list(const node_list *lines);
+int history_center(shell_data *data);
+size_t string_lprint(const node_list *s);
+
+/* set_unset_env.c */
+
+int set_envir(shell_data *data);
+int unset_envir(shell_data *data);
+int env_unset(shell_data *data, char *str);
+int alias_center(shell_data *data);
+
+/* shell_builtin.c */
+
+int exit_shell(shell_data *data);
+int comd_line(shell_data *data);
+char *env_check(shell_data *data, const char *inputs);
+int help_center(shell_data *data);
+
+/* utils_history.c */
+
+int add_to_history(shell_data *data, char *command, int line_num);
+node_list *insert_endnode(node_list **head, const char *str_t, int place);
+int history_changenum(shell_data *data);
+int index_del(node_list **hd, unsigned int i);
 
 
 #endif
