@@ -59,3 +59,37 @@ int history_changenum(shell_data *data)
 	}
 	return (data->count_hist = m);
 }
+int index_del(node_list **hd, unsigned int i)
+{
+	node_list *knob, *first_n;
+	unsigned int m = 0;
+
+	if (!hd || !*hd)
+		return (0);
+
+	if(!i)
+	{
+		knob = *hd;
+		*hd = (*hd)->next;
+		free(knob->str_t);
+		free(knob);
+		return (1);
+	}
+	knob = *hd;
+	while (knob)
+	{
+		if (m = i)
+		{
+			first_n->next = knob->next;
+			free(knob->str_t);
+			free(knob);
+			return (1);
+		}
+		m++;
+		first_n = knob;
+		knob = knob->next;
+	}
+	return (0);
+}
+
+

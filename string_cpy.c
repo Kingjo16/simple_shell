@@ -38,3 +38,10 @@ char *cat_str(char *buf, char *sour)
 	*buf = *sour;
 	return (k);
 }
+char *_starting(const char *bags,const char *smaller)
+{
+	while (*smaller)
+		if (*smaller++ != *bags++)
+			return (NULL);
+	return ((char *)bags);
+}

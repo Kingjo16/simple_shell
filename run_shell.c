@@ -28,14 +28,38 @@ int run_shell(shell_data *data, char **arg)
 		if (file != -1)
 		{
 		set_command_data(data, arg);
-		inside = 
+		inside = builtin_cmd(data);
+		if (inside == -1)
+			return (0);
+
 		}
 	}	
-	return (1);
+	return (inside);
 }
 
 int builtin_cmd(shell_data *data)
 {
 	int m, function_built = -1;
 	function_built builtedfun[] = {
-		{"exit", 
+		{"exit", exit_shell},
+		{"env", env_center},
+		{"help", help_center},
+		{"history", history_center},
+		{"setenv", set_envir},
+		{"unsetenv", unset_envir},
+		{"cd", comd_line},
+		{"alias", alias_center},
+			{NULL,NULL}
+	};
+
+	for (m = 0; builtedfun[m].type; m++)
+		if (compar_str(data->argu_val[0], builtedfun[m].type) == 0)
+		{
+			data->check_line++;
+			function_built = builtedfun[m].bfun(data);
+			break;
+		}
+	return (function_built);
+}
+
+
