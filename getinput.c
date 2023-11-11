@@ -1,4 +1,11 @@
 #include "memory.h"
+
+/**
+ * handle_signal - Signal handler function for handling interrupt signals.
+ * @signal_number: The number of the received signal (unused).
+ * Return: None.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void handle_signal(__attribute__((unused))int signal_number)
 {
 	_prints("\n");
@@ -6,6 +13,14 @@ void handle_signal(__attribute__((unused))int signal_number)
 	_printchar(FLUSH);
 }
 
+/**
+ * into_buf - Reads data from a file into a buffer.
+ * @data: Pointer to the shell data structure.
+ * @buffer: Pointer to the buffer to store the read data.
+ * @index: Pointer to the current index of the buffer.
+ * Return: Returns the number of bytes read or 0 if the buffer already contains data.
+ * By Kidus Yohannes and Petros Worku.
+ */
 ssize_t into_buf(shell_data *data, char *buffer, size_t *index)
 {
 	ssize_t re = 0;
@@ -21,6 +36,14 @@ ssize_t into_buf(shell_data *data, char *buffer, size_t *index)
 	return (re);
 }
 
+/**
+ * read_input_buffer - Reads input from stdin into a buffer.
+ * @data: Pointer to the shell data structure.
+ * @buffer: Pointer to the buffer to store the read input.
+ * @num: Pointer to the number of bytes read.
+ * Return: Returns the number of bytes read.
+ * By Kidus Yohannes and Petros Worku.
+ */
 ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 {
 	ssize_t bytes_read = 0;
@@ -58,6 +81,14 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 	return (bytes_read);
 }
 
+/**
+ * custom_getline - Reads input from the buffer into a pointer.
+ * @data: Pointer to the shell data structure.
+ * @pointer: Pointer to the pointer that will store the read input.
+ * @len: Pointer to the length of the input.
+ * Return: Returns the number of characters read.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int custom_getline(shell_data *data, char **pointer, size_t *len)
 {
 	static char buffer[BUFFER_SIZES];
@@ -98,6 +129,12 @@ int custom_getline(shell_data *data, char **pointer, size_t *len)
 	*pointer = p;
 	return (s);
 }
+
+/**
+ * comment_rm - Removes comments from the buffer.
+ * @buffer: Pointer to the buffer.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void comment_rm(char *buffer)
 {
 	int m;

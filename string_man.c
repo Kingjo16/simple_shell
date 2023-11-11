@@ -1,5 +1,12 @@
 #include "memory.h"
 
+/**
+ * str_copy - Copy a string to a destination string.
+ * @destination: The destination string where the source string will be copied.
+ * @stringc: The source string to be copied.
+ * Return: A pointer to the destination string.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *str_copy(char *destination, char *stringc)
 {
 	int m = 0;
@@ -17,6 +24,12 @@ char *str_copy(char *destination, char *stringc)
 	return (destination);
 }
 
+/**
+ * str_dup - Duplicate a string.
+ * @string: The string to be duplicated.
+ * Return: A pointer to the duplicated string.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *str_dup(const char *string)
 {
 	int len = 0;
@@ -35,6 +48,11 @@ char *str_dup(const char *string)
 	return (net);
 }
 
+/**
+ * _prints - Print a string character by character.
+ * @string: The string to be printed.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void _prints(char *string)
 {
 	int m = 0;
@@ -49,6 +67,12 @@ void _prints(char *string)
 	}
 }
 
+/**
+ * _printchar - Print a single character.
+ * @character: The character to be printed.
+ * Return: This function does not return a value.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int _printchar(char character)
 {
 

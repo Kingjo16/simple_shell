@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * set_command_data - Sets command-related data in the shell data structure.
+ * @data: Pointer to the shell data structure.
+ * @argVal: Array of argument values.
+ * By Kidus Yohannes and petros Worku.
+ */
 void set_command_data(shell_data *data, char ** argVal)
 {
 	int a_index = 0;
@@ -27,6 +33,13 @@ void set_command_data(shell_data *data, char ** argVal)
 		cmd_var_replace(data);
 	}
 }
+
+/**
+ * split_str - Splits a string into an array of substrings based on a delimiter.
+ * @s: Pointer to the string to be split.
+ * @del: Pointer to the delimiter string.
+ * By Kidus Yohannes and petros Worku.
+ */
 char **split_str(char *s, char *del)
 {
 	int m, l, k, word_len, wordz = 0;
@@ -76,6 +89,12 @@ char **split_str(char *s, char *del)
 	return (split_strs);
 }
 
+/**
+ * del_check - Checks if a character is a delimiter.
+ * @del: Pointer to the delimiter string.
+ * Return: If no match is found, the function returns 0 to indicate that 'char_delim' is not a delimiter.
+ * By Kidus Yohannes and petros Worku.
+ */
 int del_check(char char_delim, char *del)
 {
 	while (*del)
@@ -89,6 +108,13 @@ int del_check(char char_delim, char *del)
 		return (0);
 }
 
+/**
+ * string_cmd_replace - Replaces a string with a new string.
+ * @replaced: Pointer to the pointer of the string to be replaced.
+ * @new: Pointer to the new string.
+ * Return: it returns 1 to indicate a successful replacement.
+ * By Kidus Yohannes and petros Worku.
+ */
 int string_cmd_replace(char **replaced, char *new)
 {
 	free(*replaced);

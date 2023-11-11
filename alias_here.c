@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * _printal - Prints all elements of the given array.
+ * @knob: Pointer to the node_list structure.
+ * Return: Returns 1 if it is Success.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int _printal(node_list *knob)
 {
 	char *q = NULL, *m = NULL;
@@ -16,6 +22,14 @@ int _printal(node_list *knob)
 	}
 	return (1);
 }
+
+/**
+ * aliaset - Sets an alias in the shell's data structure.
+ * @var: Pointer to the alias string.
+ * @data: Pointer to the shell_data structure.
+ * Return: Returns 0 on successful.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int aliaset(shell_data *data, char *var)
 {
 	char *q;
@@ -25,11 +39,19 @@ int aliaset(shell_data *data, char *var)
 		return (1);
 	if (!*++q)
 		return (aliasunset(data, var));
-	
+
 	aliasunset(data, var);
-	return (insert_endnode(&(data->alias_t), var , 0) == NULL);
+	return (insert_endnode(&(data->alias_t), var, 0) == NULL);
 
 }
+
+/**
+ * aliasunset - Unsets an alias in the shell's data structure.
+ * @var: Pointer to the alias string.
+ * @data: Pointer to the shell_data structure.
+ * Return: Returns the result of the 'index_del' operation, indicating success (0).
+ * By Kidus Yohannes and Petros Worku.
+ */
 int aliasunset(shell_data *data, char *var)
 {
 	char *q, cap;
@@ -46,6 +68,14 @@ int aliasunset(shell_data *data, char *var)
 	*q = cap;
 	return (k);
 }
+
+/**
+ * index_knob - Returns the index of a node in a linked list.
+ * @knob: Pointer to the node to find the index of.
+ * @enter: Pointer to the starting node of the linked list.
+ * Return: Returns the index of 'knob' if found, or -1 if 'knob' is not found.
+ * By Kidus Yohannes and Petros Worku.
+ */
 ssize_t index_knob(node_list *enter, node_list *knob)
 {
 	size_t m = 0;
@@ -59,6 +89,3 @@ ssize_t index_knob(node_list *enter, node_list *knob)
 	}
 	return (-1);
 }
-
-
-

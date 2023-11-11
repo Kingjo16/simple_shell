@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * exit_shell - Handles the exit command.
+ * @data: The shell data structure.
+ * Return: -2 to exit the shell with the specified exit status.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int exit_shell(shell_data *data)
 {
 	int ch_exi;
@@ -21,6 +27,13 @@ int exit_shell(shell_data *data)
 	data->num_error = -1;
 	return (-2);
 }
+
+/**
+ * comd_line - Handles the cd (change directory) command.
+ * @data: The shell data structure.
+ * Return: Always returns 0.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int comd_line(shell_data *data)
 {
 	int get_r;
@@ -66,6 +79,14 @@ int comd_line(shell_data *data)
 	return (0);
 
 }
+
+/**
+ * env_check - Check for the presence of an environment variable.
+ * @data: The shell data structure.
+ * @inputs: The environment variable to search for.
+ * Return: A pointer to the matching environment variable string.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *env_check(shell_data *data, const char *inputs)
 {
 	node_list *knob = data->envir;
@@ -80,6 +101,13 @@ char *env_check(shell_data *data, const char *inputs)
 	}
 	return (NULL);
 }
+
+/**
+ * help_center - Handles the help command.
+ * @data: The shell data structure.
+ * Return: Always returns 0.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int help_center(shell_data *data)
 {
 	char **given_a;

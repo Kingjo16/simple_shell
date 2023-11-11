@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * cmd_alias_replace - Replaces an alias in the shell data structure.
+ * @data: The shell data structure.
+ * Return: 1 if the alias replacement was successful, 0 otherwise.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int cmd_alias_replace(shell_data *data)
 {
 	node_list *knob;
@@ -23,6 +29,14 @@ int cmd_alias_replace(shell_data *data)
 	return (1);
 }
 
+/**
+ * find_node - Finds a node in a linked list.
+ * @knob: The head node of the linked list.
+ * @fixer: The string to search for in each node.
+ * @ch: The character to check in the found node.
+ * Return: The node in the linked list that matches the search criteria, or NULL if no matching node is found.
+ * By Kidus Yohannes and Petros Worku.
+ */
 node_list *find_node(node_list *knob, char  *fixer, char ch)
 {
 	char *q = NULL;
@@ -38,6 +52,14 @@ node_list *find_node(node_list *knob, char  *fixer, char ch)
 	}
 	return (NULL);
 }
+
+/**
+ * enter_here - Checks if a prefix exists in a string.
+ * @str: The string to search in.
+ * @prefix: The prefix to check for.
+ * Return: A pointer to the position in 'str' where the prefix ends, or NULL if the prefix was not found.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *enter_here(const char *str, const char *prefix)
 {
 	while (*prefix)
@@ -46,6 +68,12 @@ char *enter_here(const char *str, const char *prefix)
 	return ((char *)str);
 }
 
+/**
+ * cmd_var_replace - Replaces variables in the shell data structure.
+ * @data: The shell data structure.
+ * Return: Always returns 0.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int cmd_var_replace(shell_data *data)
 {
 	int m = 0;

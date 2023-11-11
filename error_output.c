@@ -1,5 +1,10 @@
 #include "memory.h"
 
+/**
+ * print_str - Prints a string character by character.
+ * @p_str: Pointer to the string to be printed.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void print_str(char *p_str)
 {
 	int index;
@@ -14,6 +19,12 @@ void print_str(char *p_str)
 	}
 }
 
+/**
+ * print_char - Prints a single character.
+ * @fe: The character to be printed.
+ * Return: It  returns 1.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int print_char(char fe)
 {
 	static int m;

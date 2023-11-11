@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * set_envir - Sets the value of an environment variable based on command-line arguments.
+ * @data: The shell data structure.
+ * Return: 1 if the environment variable is set successfully, 0 if there is an error.
+ * By Kidus Yohanes and Petros Worku.
+ */
 int set_envir(shell_data *data)
 {
 	if (data->argu_count !=3)
@@ -12,6 +18,12 @@ int set_envir(shell_data *data)
 	return (1);
 }
 
+/**
+ * unset_envir - Unsets environment variables based on command-line arguments.
+ * @data: The shell data structure.
+ * Return: Always returns 0.
+ * By Kidus Yohanes and Petros Worku.
+ */
 int unset_envir(shell_data *data)
 {
 	int m;
@@ -25,6 +37,14 @@ int unset_envir(shell_data *data)
 		env_unset(data, data->argu_val[m]);
 	return (0);
 }
+
+/**
+ * env_unset - Unsets an environment variable.
+ * @data: The shell data structure.
+ * @str: The name of the environment variable to unset.
+ * Return: The index of the removed node if the environment variable is successfully unset.
+ * By Kidus Yohanes and Petros Worku.
+ */
 int env_unset(shell_data *data, char *str)
 {
 	char *q;
@@ -49,6 +69,13 @@ int env_unset(shell_data *data, char *str)
 	}
 	return (data->change_env);
 }
+
+/**
+ * alias_center - Handles the alias command.
+ * @data: The shell data structure.
+ * Return: Always returns 0.
+ * By Kidus Yohanes and Petros Worku.
+ */
 int alias_center(shell_data *data)
 {
 	int m = 0;

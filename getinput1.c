@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * find_input - Reads input from a buffer and processes it.
+ * @data: Pointer to the shell data structure.
+ * Return: Returns the length of the processed input or -1 if an error occurs.
+ * By Kidus Yohannes and Petros Worku.
+ */
 ssize_t find_input(shell_data *data)
 {
 	static char *buffer;
@@ -38,7 +44,16 @@ ssize_t find_input(shell_data *data)
 	return (br);
 }
 
-
+/**
+ * check_com_chain - Checks the command chain type and updates the buffer indices.
+ * @data: Pointer to the shell data structure.
+ * @b: Pointer to the input buffer.
+ * @q: Pointer to the current buffer index.
+ * @m: Current buffer index.
+ * @d: Total number of characters in the buffer.
+ * Return: None.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d)
 {
 	size_t l = *q;
@@ -63,6 +78,14 @@ void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d)
 	*q = l;
 }
 
+/**
+ * command_chain - Checks the command chain type and updates the buffer index.
+ * @data: Pointer to the shell data structure.
+ * @buffer: Pointer to the input buffer.
+ * @q: Pointer to the current buffer index.
+ * Return: Returns 1 if the command chain type is updated, 0 otherwise.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int command_chain(shell_data *data, char *buffer, size_t *q)
 {
 	size_t l = *q;
@@ -91,6 +114,13 @@ int command_chain(shell_data *data, char *buffer, size_t *q)
 	*q = l;
 	return (1);
 }
+
+/**
+ * str_length - Calculates the length of a string.
+ * @string: Pointer to the input string.
+ * Return: Returns the length of the string.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int str_length(char *string)
 {
 	int m = 0;

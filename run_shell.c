@@ -1,5 +1,10 @@
 #include "memory.h"
 
+/**
+ * init_data - Initializes the shell data structure.
+ * @data: The shell data structure to initialize.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void init_data(shell_data *data)
 {
 	data->argu = NULL;
@@ -8,11 +13,24 @@ void init_data(shell_data *data)
 	data->argu_count = 0;
 }
 
+/**
+ * is_interactive - Checks if the shell is running in interactive mode.
+ * @data: The shell data structure.
+ * Return: 1 if the shell is running in interactive mode, 0 otherwise.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int is_interactive(shell_data *data)
 {
 	return (isatty(STDIN_FILENO) && data->readfile <= 2);
 }
 
+/**
+ * run_shell - Runs the shell.
+ * @data: The shell data structure.
+ * @arg: The command-line arguments passed to the shell.
+ * Return: The value of 'inside' indicating the shell's exit status.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int run_shell(shell_data *data, char **arg)
 {
 	ssize_t file = 0;
@@ -37,6 +55,12 @@ int run_shell(shell_data *data, char **arg)
 	return (inside);
 }
 
+/**
+ * builtin_cmd - Executes built-in commands.
+ * @data: The shell data structure.
+ * Return: The value of 'fun_built' indicating the success.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int builtin_cmd(shell_data *data)
 {
 	int m, fun_built = -1;

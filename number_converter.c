@@ -1,5 +1,13 @@
 #include "memory.h"
 
+/**
+ * number_base_con - Converts a number to a string representation in a specified base.
+ * @num: The number to convert.
+ * @b: The base to convert the number to.
+ * @flag: Flag indicating conversion options.
+ * Return: A pointer to the resulting string in 'buf'.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *number_base_con(long int num, int b, int flag)
 {
 	static char buf[50];
@@ -27,6 +35,13 @@ char *number_base_con(long int num, int b, int flag)
 		*--points = s;
 	return (points);
 }
+
+/**
+ * string_to_int - Converts a string to an integer.
+ * @str: The string to convert.
+ * Return: The converted integer value if successful, or -1 if an error occurs.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int string_to_int(char *str)
 {
 	int m = 0;

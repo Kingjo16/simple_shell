@@ -1,5 +1,12 @@
 #include "memory.h"
 
+/**
+ * main - Entry point of the program.
+ * @argCount: Number of command-line arguments.
+ * @argVal: Command-line arguments.
+ * Return: Returns 0 indicating success.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int main(int argCount, char **argVal)
 {
 	shell_data data[] = {0};
