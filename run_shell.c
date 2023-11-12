@@ -51,7 +51,7 @@ int run_shell(shell_data *data, char **arg)
 			return (0);
 
 		}
-	}	
+	}
 	return (inside);
 }
 
@@ -73,7 +73,7 @@ int builtin_cmd(shell_data *data)
 		{"unsetenv", unset_envir},
 		{"cd", comd_line},
 		{"alias", alias_center},
-			{NULL,NULL}
+		   {NULL, NULL}
 	};
 
 	for (m = 0; builtedfun[m].type; m++)

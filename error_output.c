@@ -8,7 +8,7 @@
 void print_str(char *p_str)
 {
 	int index;
-	
+
 	index = 0;
 	if (p_str == NULL)
 		return;

@@ -37,7 +37,7 @@ int exit_shell(shell_data *data)
 int comd_line(shell_data *data)
 {
 	int get_r;
-	char *str,*m, buf[1024];
+	char *str, *m, buf[1024];
 
 	str = getcwd(buf, 1024);
 
@@ -60,7 +60,7 @@ int comd_line(shell_data *data)
 			_printchar('\n');
 			return (1);
 		}
-		_prints(env_check(data, "OLDPWD=")),_printchar('\n');
+		_prints(env_check(data, "OLDPWD=")), _printchar('\n');
 		get_r = /*sth to add */
 			chdir((m = env_check(data, "OLDPWD=")) ? m : "/");
 	}

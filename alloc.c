@@ -28,7 +28,7 @@ void free_strings(char **strings)
 {
 
 	char **ptr = strings;
-	
+
 	if (!strings)
 		return;
 	while (*strings)
@@ -41,7 +41,7 @@ void free_strings(char **strings)
  * @used_s: Size of the used portion of the memory block.
  * @given_s: Size of the new memory block to allocate.
  * @ptr: Pointer to the block of memory.
- * Return: Returns a pointer to the new memory block if reallocation is successful, or NULL.
+ * Return: pointer to the new memory block if reallocation is successful.
  * By Kidus Yohannes and Petros worku.
  */
 void *alloc(void *ptr, unsigned int used_s, unsigned int given_s)
@@ -51,14 +51,14 @@ void *alloc(void *ptr, unsigned int used_s, unsigned int given_s)
 	if (!ptr)
 		return (malloc(given_s));
 	if (!given_s)
-		return (free(ptr),NULL);
+		return (free(ptr), NULL);
 
 	if (given_s == used_s)
 		return (ptr);
 
 	m = malloc(given_s);
 	if (!m)
-		return NULL;
+		return (NULL);
 
 	used_s = used_s < given_s ? used_s : given_s;
 	while (used_s--)

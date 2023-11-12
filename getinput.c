@@ -18,7 +18,7 @@ void handle_signal(__attribute__((unused))int signal_number)
  * @data: Pointer to the shell data structure.
  * @buffer: Pointer to the buffer to store the read data.
  * @index: Pointer to the current index of the buffer.
- * Return: Returns the number of bytes read or 0 if the buffer already contains data.
+ * Return: The number of bytes read or 0 if the buffer already contains data.
  * By Kidus Yohannes and Petros Worku.
  */
 ssize_t into_buf(shell_data *data, char *buffer, size_t *index)
@@ -54,7 +54,7 @@ ssize_t read_input_buffer(shell_data *data, char **buffer, size_t *num)
 		free(*buffer);
 		*buffer = NULL;
 		signal(SIGINT, handle_signal);
-	
+
 #if ENTERANCE
 		bytes_read = getline(buffer, &allocate_buf_len, stdin);
 #else
@@ -138,7 +138,7 @@ int custom_getline(shell_data *data, char **pointer, size_t *len)
 void comment_rm(char *buffer)
 {
 	int m;
-	
+
 	for (m = 0; buffer[m] != '\0'; m++)
 		if (buffer[m] == '#' && (!m || buffer[m - 1] == ' '))
 		{

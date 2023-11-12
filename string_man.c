@@ -10,10 +10,10 @@
 char *str_copy(char *destination, char *stringc)
 {
 	int m = 0;
-	
+
 	if (destination == stringc || stringc == 0)
 		return (destination);
-	
+
 	while (stringc[m])
 	{
 		destination[m] = stringc[m];

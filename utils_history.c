@@ -99,7 +99,7 @@ int index_del(node_list **hd, unsigned int i)
 	if (!hd || !*hd)
 		return (0);
 
-	if(!i)
+	if (!i)
 	{
 		knob = *hd;
 		*hd = (*hd)->next;

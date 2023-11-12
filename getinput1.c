@@ -45,7 +45,7 @@ ssize_t find_input(shell_data *data)
 }
 
 /**
- * check_com_chain - Checks the command chain type and updates the buffer indices.
+ * check_com_chain - Checks the command chain type.
  * @data: Pointer to the shell data structure.
  * @b: Pointer to the input buffer.
  * @q: Pointer to the current buffer index.
@@ -54,7 +54,7 @@ ssize_t find_input(shell_data *data)
  * Return: None.
  * By Kidus Yohannes and Petros Worku.
  */
-void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d)
+void check_com_chain(shell_data *data, char *b, size_t *q, size_t m, size_t d)
 {
 	size_t l = *q;
 

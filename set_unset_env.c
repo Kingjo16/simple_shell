@@ -1,14 +1,14 @@
 #include "memory.h"
 
 /**
- * set_envir - Sets the value of an environment variable based on command-line arguments.
+ * set_envir - Sets the value of an environment variable.
  * @data: The shell data structure.
- * Return: 1 if the environment variable is set successfully, 0 if there is an error.
+ * Return: 1 if the environment variable is set successfully.
  * By Kidus Yohanes and Petros Worku.
  */
 int set_envir(shell_data *data)
 {
-	if (data->argu_count !=3)
+	if (data->argu_count != 3)
 	{
 		print_str("Incorrect number of arguements\n");
 		return (1);
@@ -33,7 +33,7 @@ int unset_envir(shell_data *data)
 		print_str("Too few arguements.\n");
 		return (1);
 	}
-	for (m = 1; m<= data->argu_count; m++)
+	for (m = 1; m <= data->argu_count; m++)
 		env_unset(data, data->argu_val[m]);
 	return (0);
 }
@@ -42,7 +42,7 @@ int unset_envir(shell_data *data)
  * env_unset - Unsets an environment variable.
  * @data: The shell data structure.
  * @str: The name of the environment variable to unset.
- * Return: The index of the removed node if the environment variable is successfully unset.
+ * Return: The index of the removed node in environment variable is successful.
  * By Kidus Yohanes and Petros Worku.
  */
 int env_unset(shell_data *data, char *str)

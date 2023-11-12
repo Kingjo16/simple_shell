@@ -49,7 +49,7 @@ int aliaset(shell_data *data, char *var)
  * aliasunset - Unsets an alias in the shell's data structure.
  * @var: Pointer to the alias string.
  * @data: Pointer to the shell_data structure.
- * Return: Returns the result of the 'index_del' operation, indicating success (0).
+ * Return: The result of the 'index_del' operation, indicating success (0).
  * By Kidus Yohannes and Petros Worku.
  */
 int aliasunset(shell_data *data, char *var)

@@ -1,7 +1,7 @@
 #include "memory.h"
 
 /**
- * number_base_con - Converts a number to a string representation in a specified base.
+ * number_base_con -  converts a number to a string representation.
  * @num: The number to convert.
  * @b: The base to convert the number to.
  * @flag: Flag indicating conversion options.
@@ -21,7 +21,7 @@ char *number_base_con(long int num, int b, int flag)
 		p = -num;
 		s = '-';
 	}
-	
+
 	ind = flag & LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	points = &buf[49];
 	*points = '\0';

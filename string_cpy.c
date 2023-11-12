@@ -62,11 +62,11 @@ char *cat_str(char *buf, char *sour)
 /**
  * _starting - Check if one string is a prefix of another string.
  * @bags: The larger string to be checked.
- * @smaller: The smaller string to be checked if it is a prefix of the larger string.
- * Return: A pointer to the remaining characters in the larger string after the prefix.
+ * @smaller: The smaller string to be checked if it's a prefix of larger set.
+ * Return: A pointer to the remaining characters in the larger string.
  * By Kidus Yohannes and Petros Worku.
  */
-char *_starting(const char *bags,const char *smaller)
+char *_starting(const char *bags, const char *smaller)
 {
 	while (*smaller)
 		if (*smaller++ != *bags++)

@@ -63,7 +63,7 @@ int env_center(shell_data *data)
 size_t print_string_list(const node_list *lines)
 {
 	size_t index = 0;
-	
+
 	while (lines)
 	{
 		_prints(lines->str_t ? lines->str_t : "(nil)");

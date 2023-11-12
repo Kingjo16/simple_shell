@@ -35,9 +35,10 @@ void set_command_data(shell_data *data, char ** argVal)
 }
 
 /**
- * split_str - Splits a string into an array of substrings based on a delimiter.
+ * split_str - Splits a string into an array of substrings.
  * @s: Pointer to the string to be split.
  * @del: Pointer to the delimiter string.
+ * Return: NULL
  * By Kidus Yohannes and petros Worku.
  */
 char **split_str(char *s, char *del)
@@ -50,7 +51,7 @@ char **split_str(char *s, char *del)
 	if (!del)
 		del = " ";
 	for (m = 0; s[m] != '\0'; m++)
-	
+
 		if (!del_check(s[m], del) && (del_check(s[m + 1], del) || !s[m + 1]))
 		wordz++;
 	if (wordz == 0)
@@ -67,7 +68,7 @@ char **split_str(char *s, char *del)
 			m++;
 
 		k = 0;
-		
+
 		while (!del_check(s[m + k], del) && s[m + k])
 			k++;
 		split_strs[l] = malloc((k + 1) * sizeof(char));
@@ -92,6 +93,7 @@ char **split_str(char *s, char *del)
 /**
  * del_check - Checks if a character is a delimiter.
  * @del: Pointer to the delimiter string.
+ * @char_delim: The character to check.
  * Return: If no match is found, the function returns 0 to indicate that 'char_delim' is not a delimiter.
  * By Kidus Yohannes and petros Worku.
  */
