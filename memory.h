@@ -118,7 +118,7 @@ int str_length(char *string);
 
 /* information_set.c */
 
-void set_command_data(shell_data *data, char ** argVal);
+void set_command_data(shell_data *data, char **argVal);
 char **split_str(char *s, char *del);
 int del_check(char char_delim, char *del);
 int string_cmd_replace(char **replaced, char *new);

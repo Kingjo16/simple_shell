@@ -43,21 +43,20 @@ char *copy_str(char *destination, char *s_string, int cpy)
 char *concat_str(char *destination, char *s_string, int cpy)
 {
 	char *dest = destination;
-        int m, l;
+	int m, l;
 
-        m = 0;
+	m = 0;
 	l = 0;
 	while (destination[m] != '\0')
 		m++;
 
-        while (s_string[l] != '\0' && m < cpy)
-        {
-                destination[m] = s_string[l];
-                m++;
+	while (s_string[l] != '\0' && m < cpy)
+	{
+		destination[m] = s_string[l];
+		m++;
 		l++;
-        }
-
-        if (l < cpy)
+	}
+	if (l < cpy)
 		destination[m] = '\0';
 	return (dest);
 }
@@ -66,7 +65,8 @@ char *concat_str(char *destination, char *s_string, int cpy)
  * char_loc - Finds the first occurrence of a character in a string.
  * @ch: Character to find.
  * @dest: Pointer to the string to search.
- * Return: Returns a pointer to the location of 'ch' in the string, or NULL if 'ch' is not found.
+ * Return: Returns a pointer to the location
+ * of 'ch' in the string, or NULL if 'ch' is not found.
  * By Kidus Yohannes and Petros Worku.
  */
 char *char_loc(char *dest, char ch)

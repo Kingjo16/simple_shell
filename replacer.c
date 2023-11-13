@@ -44,15 +44,16 @@ node_list *find_node(node_list *knob, char  *fixer, char ch)
 	while (knob)
 	{
 		q = enter_here(knob->str_t, fixer);
-		if (q && ((ch = -1) || (*q == ch)))
-		{
+
+		if (q && ((ch == -1) || (*q == ch)))
+			{
 			return (knob);
+			}
 		}
+
 		knob = knob->next;
-	}
 	return (NULL);
 }
-
 /**
  * enter_here - Checks if a prefix exists in a string.
  * @str: The string to search in.
@@ -104,6 +105,7 @@ int cmd_var_replace(shell_data *data)
 			continue;
 		}
 		string_cmd_replace(&data->argu_val[m], str_dup(""));
+
 	}
 	return (0);
 }

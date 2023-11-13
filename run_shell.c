@@ -47,7 +47,7 @@ int run_shell(shell_data *data, char **arg)
 		{
 		set_command_data(data, arg);
 		inside = builtin_cmd(data);
-		if (inside == -1)
+	if (inside == -1)
 			return (0);
 
 		}
@@ -85,5 +85,3 @@ int builtin_cmd(shell_data *data)
 		}
 	return (fun_built);
 }
-
-

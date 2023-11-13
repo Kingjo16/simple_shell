@@ -40,7 +40,6 @@ int comd_line(shell_data *data)
 	char *str, *m, buf[1024];
 
 	str = getcwd(buf, 1024);
-
 	if (!str)
 		_prints("TODO: >>getcwd failure emsg here<<\n");
 	if (!data->argu_val[1])
@@ -74,12 +73,10 @@ int comd_line(shell_data *data)
 	else
 	{
 		env_set(data, "OLDPWD", env_check(data, "PWD="));
-		env_set(data, "PWD", getcwd(buf, 1024));;
+		env_set(data, "PWD", getcwd(buf, 1024));
 	}
 	return (0);
-
 }
-
 /**
  * env_check - Check for the presence of an environment variable.
  * @data: The shell data structure.
