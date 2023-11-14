@@ -69,6 +69,13 @@ void *alloc(void *ptr, unsigned int used_s, unsigned int given_s)
 	free(ptr);
 	return (m);
 }
+
+/**
+ * data_free - Free the memory allocated for shell_data structure.
+ * @comb: Flag to indicate whether to free combined data.
+ * @data: Pointer to the shell_data structure.
+ * By Kidus Yohannes and Petros worku.
+ */
 void data_free(shell_data *data,int comb)
 {
 	free_strings(data->argu_val);
@@ -93,6 +100,12 @@ void data_free(shell_data *data,int comb)
 		_printchar(FLUSH);
 	}
 }
+
+/**
+ * node_free - Free the memory allocated for a linked list of nodes.
+ * @ptr: Pointer to the pointer of the linked list head.
+ * By Kidus Yohannes and Petros worku.
+ */
 void node_free(node_list **ptr)
 {
 	node_list *knob, *knob_n, *head;
