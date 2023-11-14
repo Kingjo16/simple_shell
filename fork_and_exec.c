@@ -1,4 +1,15 @@
 #include "memory.h"
+size_t node_length(const node_list *head)
+{
+        size_t m = 0;
+
+        while (head)
+        {
+                head = head->next;
+                m++;
+        }
+        return (m);
+}
 
 void fork_and_exec(shell_data *data)
 {
@@ -23,7 +34,7 @@ void fork_and_exec(shell_data *data)
 	}
 	else
 	{
-		eait(&(data->status));
+		wait(&(data->status));
 		if (WIFEXITED(data->status))
 		{
 			data->status = WEXITSTATUS(data->status);
@@ -62,18 +73,11 @@ char **string_list(node_list *head)
 		       free(str_s);
 		       return (NULL);
 	       }
+	       str_t = str_copy(str_t, knob->str_t);
+	       str_s[m] = str_t;
+       }
 	       str_s[m] = NULL;
 	       return (str_s);
-}
-size_t node_length(const node_list *head)
-{
-	size_t m = 0;
 
-	while (head)
-	{
-		head = head->next;
-		m++;
-	}
-	return (m);
 }
 

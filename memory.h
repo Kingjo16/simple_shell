@@ -22,7 +22,7 @@
 
 #define LOWERCASE	1
 #define UNSIGNED_CON	2
-
+#define HISTORY_FILE ".history_file_shell"
 #define NORM_COMMAND	0
 #define OR_COMMAND	1
 #define AND_COMMAND	2
@@ -201,6 +201,13 @@ int write_cmd_hist(shell_data *data);
 char *filename_history(shell_data *data);
 int write_string_to_fd(char *string, int file_descriptor);
 int write_char_to_fd(char ch, int file_descriptor);
+
+/* fork_and_exec.c */
+
+void fork_and_exec(shell_data *data);
+char **get_environment_variables(shell_data *data);
+char **string_list(node_list *head);
+size_t node_length(const node_list *head);
 
 
 #endif
