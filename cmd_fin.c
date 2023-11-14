@@ -16,14 +16,14 @@ void find_executable(shell_data *data)
 		data->check_line++;
 		data->flag_count = 0;
 	}
-	for (m=0, l = 0; data->argu[m]; m++)
+	for (m = 0, l = 0; data->argu[m]; m++)
 		if (!del_check(data->argu[m], " \t\n"))
 			l++;
 	if (!l)
 		return;
-	
+
 	path = path_finder(data, env_check(data, "PATH="), data->argu_val[0]);
-       if (path_var)
+	if (path_var)
        {
 	       data->path = path;
 	       fork_and_exec(data);

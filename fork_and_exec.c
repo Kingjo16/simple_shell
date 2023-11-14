@@ -1,5 +1,9 @@
 #include "memory.h"
-
+/**
+ * fork_and_exec - Fork a child process and execute a command.
+ * @data: Pointer to the shell_data structure.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void fork_and_exec(shell_data *data)
 {
 	pid_t child_process_id;
@@ -32,6 +36,13 @@ void fork_and_exec(shell_data *data)
 		}
 	}
 }
+
+/**
+ * get_environment_variables - Get the environment variables from shell_data.
+ * @data: Pointer to the shell_data structure.
+ * Return: Pointer to the environment variables as a 'char**'.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char **get_environment_variables(shell_data *data)
 {
 	if (!data->env_n || data->change_env)
@@ -41,6 +52,13 @@ char **get_environment_variables(shell_data *data)
 	}
 	return (data->env_n);
 }
+
+/**
+ * string_list - Create a string array from a linked list of strings.
+ * @head: Pointer to the head of the linked list.
+ * Return: Pointer to the string array (char**).
+ * By Kidus Yohannes and Petros Worku.
+ */
 char **string_list(node_list *head)
 {
 	char **str_s, *str_t;
@@ -65,6 +83,13 @@ char **string_list(node_list *head)
 	       str_s[m] = NULL;
 	       return (str_s);
 }
+
+/**
+ * node_length - Get the number of nodes in a linked list.
+ * @head: Pointer to the head of the linked list.
+ * Return: Number of nodes in the linked list.
+ * By Kidus Yohannes and Petros Worku.
+ */
 size_t node_length(const node_list *head)
 {
 	size_t m = 0;
