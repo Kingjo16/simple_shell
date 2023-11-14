@@ -19,6 +19,15 @@ void find_executable(shell_data *data)
 	
 	path_var = 
 }
+
+/**
+ * path_finder - Find the executable file in the specified paths.
+ * @data: Pointer to the shell_data structure.
+ * @str_p: Paths string separated by ':'.
+ * @exe: Executable file name.
+ * Return: Pointer to the found executable file path.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *path_finder(shell_data *data, char *str_p, char *exe)
 {
 	char *path;
@@ -54,6 +63,14 @@ char *path_finder(shell_data *data, char *str_p, char *exe)
 	return (NULL);
 
 }
+
+/**
+ * cmd_check - Check if a file exists and is a regular file.
+ * @data: Pointer to the shell_data structure.
+ * @finder: File path to be checked.
+ * Return: 1 if the file exists and is a regular file.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int cmd_check(shell_data *data, char *finder)
 {
 	struct stat st;
@@ -67,6 +84,15 @@ int cmd_check(shell_data *data, char *finder)
 	}
 	return (0);
 }
+
+/**
+ * char_duplicator - Create a duplicate of a character substring.
+ * @str_p: Source string.
+ * @enter: Starting index of the substring.
+ * @finish: Ending index of the substring.
+ * Return: Pointer to the duplicated substring.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *char_duplicator(char *str_p, int enter, int finish)
 {
 	static char buffer[1024];

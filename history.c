@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * write_cmd_hist - Write command history to a file.
+ * @data: Pointer to the shell_data structure.
+ * Return: 1 on success, -1 on failure.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int write_cmd_hist(shell_data *data)
 {
 	node_list *knob = NULL;
@@ -25,6 +31,12 @@ int write_cmd_hist(shell_data *data)
 
 }
 
+/**
+ * filename_history - Generate the filename for the command history file.
+ * @data: Pointer to the shell_data structure.
+ * Return: Pointer to the generated filename string.
+ * By Kidus Yohannes and Petros Worku.
+ */
 char *filename_history(shell_data *data)
 {
 	char *buffer, *cmd;
@@ -38,18 +50,33 @@ char *filename_history(shell_data *data)
 	cat_str(buf, HIST_FILE);
 	return (buffer);
 }
+
+/**
+ * write_string_to_fd - Write a string to a file descriptor.
+ * @string: Pointer to the string to be written.
+ * @file_descriptor: File descriptor of the target file.
+ * Return: Total number of bytes written.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int write_string_to_fd(char *string, int file_descriptor)
 {
 	int bytes_written = 0;
 
 	if (!string)
-		return 0;
+		return (0);
 	while (*string)
 	{
 		bytes_written += write_char_to_fd(*string++, file_descriptor);
 	}
-	return bytes_written;
+	return (bytes_written);
 }
+
+/**
+ * write_char_to_fd - Write a character to a file descriptor.
+ * @ch: Character to be written.
+ * @file_descriptor: File descriptor of the target file.
+ * Return: 1 on success.
+ */
 int write_char_to_fd(char ch, int file_descriptor)
 {
 	static int buffer_index;
