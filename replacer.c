@@ -14,7 +14,7 @@ int cmd_alias_replace(shell_data *data)
 
 	for (m = 0; m < 10; m++)
 	{
-		knob = find_node(data->other_a, data->argu_val[0], '=');
+		knob = find_node(data->alias_t, data->argu_val[0], '=');
 		if (!knob)
 			return (0);
 		free(data->argu_val[0]);
