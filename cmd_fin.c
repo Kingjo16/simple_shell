@@ -35,7 +35,6 @@ void find_executable(shell_data *data)
 	       }
        }
 }
-<<<<<<< HEAD
 
 /**
  * path_finder - Find the executable file in the specified paths.
@@ -45,9 +44,6 @@ void find_executable(shell_data *data)
  * Return: Pointer to the found executable file path.
  * By Kidus Yohannes and Petros Worku.
  */
-=======
-	       
->>>>>>> 2597fc806cf3a7be97fb59c279bfcd5f65285c37
 char *path_finder(shell_data *data, char *str_p, char *exe)
 {
 	char *path;
