@@ -2,7 +2,7 @@
 
 void find_executable(shell_data *data)
 {
-	char *path_var = NULL;
+	char *path = NULL;
 	int m, l;
 
 	data->path = data->argu_val[0];
@@ -17,8 +17,25 @@ void find_executable(shell_data *data)
 	if (!l)
 		return;
 	
-	path_var = 
+	path = path_finder(data, env_check(data, "PATH="), data->argu_val[0]);
+       if (path_var)
+       {
+	       data->path = path;
+	       fork_and_exec(data);
+       }
+       else
+       {
+	       if ((is_interactive(data) || env_check(data, "PATH=")
+		|| data->argu_val[0][0] == '/') && cmd_check(data, data->argu_val[0]))
+		       fork_and_exec(data);
+	       else if (*(data->argu) != '\n')
+	       {
+		       data->status = 127;
+		       error_message(data, "not found\n");
+	       }
+       }
 }
+	       
 char *path_finder(shell_data *data, char *str_p, char *exe)
 {
 	char *path;
