@@ -1,5 +1,10 @@
 #include "memory.h"
 
+/**
+ * find_executable - Find and execute an executable file.
+ * @data: Pointer to the shell_data structure.
+ * By Kidus Yohanns and Petros Worku.
+ */
 void find_executable(shell_data *data)
 {
 	char *path = NULL;
@@ -120,6 +125,13 @@ char *char_duplicator(char *str_p, int enter, int finish)
 	buffer[l] = 0;
 	return (buffer);
 }
+
+/**
+ * ptr_free - Free memory and set pointer to NULL.
+ * @pointer: Pointer to the memory block to be freed.
+ * Return: 1 if memory is freed and pointer is set to NULL.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int ptr_free(void **pointer)
 {
 	if (pointer && *pointer)
