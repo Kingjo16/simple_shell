@@ -1,9 +1,24 @@
 #include "memory.h"
+<<<<<<< HEAD
 /**
  * fork_and_exec - Fork a child process and execute a command.
  * @data: Pointer to the shell_data structure.
  * By Kidus Yohannes and Petros Worku.
  */
+=======
+size_t node_length(const node_list *head)
+{
+        size_t m = 0;
+
+        while (head)
+        {
+                head = head->next;
+                m++;
+        }
+        return (m);
+}
+
+>>>>>>> 4b3b255364dc39dbf30b3edb91296f6b05cb561c
 void fork_and_exec(shell_data *data)
 {
 	pid_t child_process_id;
@@ -27,7 +42,7 @@ void fork_and_exec(shell_data *data)
 	}
 	else
 	{
-		eait(&(data->status));
+		wait(&(data->status));
 		if (WIFEXITED(data->status))
 		{
 			data->status = WEXITSTATUS(data->status);
@@ -80,8 +95,12 @@ char **string_list(node_list *head)
 		       free(str_s);
 		       return (NULL);
 	       }
+	       str_t = str_copy(str_t, knob->str_t);
+	       str_s[m] = str_t;
+       }
 	       str_s[m] = NULL;
 	       return (str_s);
+<<<<<<< HEAD
 }
 
 /**
@@ -93,12 +112,8 @@ char **string_list(node_list *head)
 size_t node_length(const node_list *head)
 {
 	size_t m = 0;
+=======
+>>>>>>> 4b3b255364dc39dbf30b3edb91296f6b05cb561c
 
-	while (head)
-	{
-		head = head->next;
-		m++;
-	}
-	return (m);
 }
 

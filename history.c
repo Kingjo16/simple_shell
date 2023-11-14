@@ -16,7 +16,7 @@ int write_cmd_hist(shell_data *data)
 		return (-1);
 
 	file_dis = open(hist_filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	free(hsit_filename);
+	free(hist_filename);
 
 	if (file_dis == -1)
 		return (-1);
@@ -44,10 +44,13 @@ char *filename_history(shell_data *data)
 	cmd = env_check(data, "HOME=");
 	if (!cmd)
 		return (NULL);
+	buffer = malloc(sizeof(char) * (str_length(cmd) + str_length(HISTORY_FILE) + 2));
+	if (!buffer)
+		return (NULL);
 	buffer[0] = 0;
 	str_copy(buffer, cmd);
 	cat_str(buffer, "/");
-	cat_str(buf, HIST_FILE);
+	cat_str(buffer, HISTORY_FILE);
 	return (buffer);
 }
 
