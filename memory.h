@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 
 #define BUFFER_SIZES 1024
+#define MAX_BUFFER_SIZE 1024
 #define SUCCESS 0
 #define FAILURE 1
 
@@ -50,6 +51,7 @@ typedef struct shell_data
 	node_list *history;
 	node_list *other_a;
 	node_list *alias_t;
+	char **env_n;
 	int change_env;
 	int status;
 
@@ -94,6 +96,8 @@ int _printchar(char character);
 char *mem_set(char *string, char c, unsigned int num);
 void free_strings(char **strings);
 void *alloc(void *ptr, unsigned int used_s, unsigned int given_s);
+void data_free(shell_data *data,int comb);
+void node_free(node_list **ptr);
 
 /* cahr_exitsearch.c */
 
@@ -182,6 +186,21 @@ int add_to_history(shell_data *data, char *command, int line_num);
 node_list *insert_endnode(node_list **head, const char *str_t, int place);
 int history_changenum(shell_data *data);
 int index_del(node_list **hd, unsigned int i);
+
+/* cmd_fin.c */
+
+void find_executable(shell_data *data);
+char *path_finder(shell_data *data, char *str_p, char *exe);
+int cmd_check(shell_data *data, char *finder);
+char *char_duplicator(char *str_p, int enter, int finish);
+int ptr_free(void **pointer);
+
+/* history.c */
+
+int write_cmd_hist(shell_data *data);
+char *filename_history(shell_data *data);
+int write_string_to_fd(char *string, int file_descriptor);
+int write_char_to_fd(char ch, int file_descriptor);
 
 
 #endif
