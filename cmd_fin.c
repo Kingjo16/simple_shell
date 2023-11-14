@@ -1,0 +1,90 @@
+#include "memory.h"
+
+void find_executable(shell_data *data)
+{
+	char *path_var = NULL;
+	int m, l;
+
+	data->path = data->argu_val[0];
+	if (data->flag_count == 1)
+	{
+		data->check_line++;
+		data->flag_count = 0;
+	}
+	for (m=0, l = 0; data->argu[m]; m++)
+		if (!del_check(data->argu[m], " \t\n"))
+			l++;
+	if (!l)
+		return;
+	
+	path_var = 
+}
+char *path_finder(shell_data *data, char *str_p, char *exe)
+{
+	char *path;
+	int m = 0, l = 0;
+
+	if (!str_p)
+		return (NULL);
+	if ((str_length(exe) > 2) && _starting(exe, "./"))
+	{
+		if (cmd_check(data, exe))
+			return (exe);
+	}
+	while (1)
+	{
+		if (!str_p[m] || str_p[m] == ':')
+		{
+			path = char_duplicator(str_p, l, m);
+			if (!*path)
+				cat_str(path, exe)
+			else
+			{
+				cat_str(path, "/");
+				cat_str(path, exe);
+			}
+			if (cmd_check(data, path))
+				return (path);
+			if (!str_p[m])
+				break;
+			l = m;
+		}
+		m++;
+	}
+	return (NULL);
+
+}
+int cmd_check(shell_data *data, char *finder)
+{
+	struct stat st;
+
+	(void)data;
+	if (!finder || stat(finder, &st))
+		return (0);
+	if (st.st_mode & S_IFREG)
+	{
+		return (1);
+	}
+	return (0);
+}
+char *char_duplicator(char *str_p, int enter, int finish)
+{
+	static char buffer[1024];
+	int m = 0, l = 0;
+
+	for (l = 0, m = enter; m < finish; m++)
+		if (str_p[m] != ':')
+			buffer[l++] = str_p[m];
+	buffer[l] = 0;
+	return (buffer);
+}
+int ptr_free(void **pointer)
+{
+	if (pointer && *pointer)
+	{
+		free(*pointer);
+			*pointer = NULL;
+		return (1);
+	}
+	return (0);
+}

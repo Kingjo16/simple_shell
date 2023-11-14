@@ -69,3 +69,44 @@ void *alloc(void *ptr, unsigned int used_s, unsigned int given_s)
 	free(ptr);
 	return (m);
 }
+void data_free(shell_data *data,int comb)
+{
+	free_strings(data->argu_val);
+	data->argu_val = NULL;
+	data->path = NULL;
+	
+	if (comb)
+	{
+		if (!data->command_buffer)
+			free(data->argu);
+		if (data->envir)
+			node_free(&(data->envir));
+		if (data->history)
+			node_free(&(data->history));
+		if (data->alias_t)
+			node_free(&(data->alias_t));
+		free_strings(data->env_n);
+		data->env_n = NULL;
+		ptr_free((void **)data->command_buffer);
+		if (data->readfile > 2)
+			close(data->readfile);
+		_printchar(FLUSH);
+	}
+}
+void node_free(node_list **ptr)
+{
+	node_list *knob, *knob_n, *head;
+
+	if (!ptr || !*ptr)
+		return;
+	head = *ptr;
+	knob = head;
+	while (knob)
+	{
+		knob_n = knob->next;
+		free(knob->str_t);
+		free(knob);
+		knob = knob_n;
+	}
+	*ptr = NULL;
+}

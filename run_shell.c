@@ -47,11 +47,24 @@ int run_shell(shell_data *data, char **arg)
 		{
 		set_command_data(data, arg);
 		inside = builtin_cmd(data);
-	if (inside == -1)
-			return (0);
-
+		if (inside == -1)
+		find_executable(data);
 		}
+		else if (is_interactive(data))
+			_printchar('\n');
+		data_free(data, 0);
 	}
+	write_cmd_hist(data);
+	data_free(data, 1);
+	if (!is_interactive(data) && data->status)
+		exit(data->status);
+	if (inside == -2)
+	{
+		if (data->num_error == -1)
+			exit(data->status);
+		exit(data->num_error);
+	}
+
 	return (inside);
 }
 
