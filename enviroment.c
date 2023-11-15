@@ -1,5 +1,11 @@
 #include "memory.h"
 
+/**
+ * build_environment_variable_list - Build a list of environment variables.
+ * @data: Pointer to the shell_data structure.
+ * Return: 0 to indicate success.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int build_environment_variable_list(shell_data *data)
 {
 	node_list *knob = NULL;
@@ -11,6 +17,12 @@ int build_environment_variable_list(shell_data *data)
 	return (0);
 }
 
+/**
+ * load_history - Load command history from a file.
+ * @data: Pointer to the shell_data structure.
+ * Return: Updated command history count.
+ * By Kidus Yohannes and Petros Worku.
+ */
 int load_history(shell_data *data)
 {
 	struct stat st;
@@ -35,7 +47,7 @@ int load_history(shell_data *data)
 	dlen = read(file_dis, buffer, size_f);
 	buffer[size_f] = 0;
 	if (dlen <= 0)
-		return (free(buffer),0);
+		return (free(buffer), 0);
 	close(file_dis);
 	for  (m = 0; m < size_f; m++)
 		if (buffer[m] == '\n')
