@@ -1,5 +1,29 @@
 #include "memory.h"
+node_list *add_node_at_start(node_list **head, const char *str_t, int place)
+{
+	node_list *new_n;
 
+	if (!head)
+		return (NULL);
+	new_n = malloc(sizeof(node_list));
+	if (!new_n)
+		return (NULL);
+	mem_set((void *)new_n, 0, sizeof(node_list));
+	new_n->place = place;
+
+	if (str_t)
+	{
+		new_n->str_t = str_dup(str_t);
+		if (!new_n->str_t)
+		{
+			free(new_n);
+			return (NULL);
+		}
+	}
+	new_n->next = *head;
+	*head = new_n;
+	return (new_n);
+}
 /**
  * add_to_history - Add a command to the history linked list.
  * @command: The command to be added to the history.

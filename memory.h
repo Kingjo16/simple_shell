@@ -220,6 +220,7 @@ int help_center(shell_data *data);
 
 /* utils_history.c */
 
+node_list *add_node_at_start(node_list **head, const char *str_t, int place);
 int add_to_history(shell_data *data, char *command, int line_num);
 node_list *insert_endnode(node_list **head, const char *str_t, int place);
 int history_changenum(shell_data *data);
