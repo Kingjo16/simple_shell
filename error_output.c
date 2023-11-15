@@ -7,10 +7,9 @@
  */
 void print_str(char *p_str)
 {
-	int index;
+	int index = 0;
 
-	index = 0;
-	if (p_str == NULL)
+	if (!p_str)
 		return;
 	while (p_str[index] != '\0')
 	{
@@ -28,15 +27,15 @@ void print_str(char *p_str)
 int print_char(char fe)
 {
 	static int m;
-	static char buffer[BUFFER_SIZES];
+	static char buffer[MAX_BUFFER_SIZE];
 
-	if (fe == FLUSH || m >= BUFFER_SIZES)
+	if (fe == FLUSH || m >= MAX_BUFFER_SIZE)
 	{
 		write(2, buffer, m);
 		m = 0;
 	}
-
-	buffer[m++] = fe;
+	if (fe != FLUSH)
+		buffer[m++] = fe;
 	return (1);
 }
 

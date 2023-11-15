@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
@@ -15,6 +14,7 @@
 
 #define BUFFER_SIZES 1024
 #define MAX_BUFFER_SIZE 1024
+#define FLUSH -1
 
 #define ENTERANCE	0
 
@@ -96,7 +96,6 @@ typedef struct shell_data
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-#define FLUSH -1
 /**
  * struct builtedfun - Built-in function association
  * @type: Type or name of the built-in function
