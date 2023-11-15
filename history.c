@@ -39,19 +39,19 @@ int write_cmd_hist(shell_data *data)
  */
 char *filename_history(shell_data *data)
 {
-	char *buffer, *cmd;
+	char *bu, *cmd;
 
 	cmd = env_check(data, "HOME=");
 	if (!cmd)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (str_length(cmd) + str_length(HISTORY_FILE) + 2));
-	if (!buffer)
+bu = malloc(sizeof(char) * (str_length(cmd) + str_length(HISTORY_FILE) + 2));
+	if (!bu)
 		return (NULL);
-	buffer[0] = 0;
-	str_copy(buffer, cmd);
-	cat_str(buffer, "/");
-	cat_str(buffer, HISTORY_FILE);
-	return (buffer);
+	bu[0] = 0;
+	str_copy(bu, cmd);
+	cat_str(bu, "/");
+	cat_str(bu, HISTORY_FILE);
+	return (bu);
 }
 
 /**

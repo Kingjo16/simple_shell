@@ -23,25 +23,24 @@ void find_executable(shell_data *data)
 		return;
 
 	path = path_finder(data, env_check(data, "PATH="), data->argu_val[0]);
-       if (path)
 
-       {
-	       data->path = path;
-	       fork_and_exec(data);
-       }
-       else
-       {
-	       if ((is_interactive(data) || env_check(data, "PATH=")
-		|| data->argu_val[0][0] == '/') && cmd_check(data, data->argu_val[0]))
-		       fork_and_exec(data);
-	       else if (*(data->argu) != '\n')
-	       {
-		       data->status = 127;
-		       error_message(data, "not found\n");
-	       }
-       }
+	if (path)
+	{
+		data->path = path;
+		fork_and_exec(data);
+	}
+	else
+	{
+		if ((is_interactive(data) || env_check(data, "PATH=")
+	|| data->argu_val[0][0] == '/') && cmd_check(data, data->argu_val[0]))
+		fork_and_exec(data);
+		else if (*(data->argu) != '\n')
+		{
+			data->status = 127;
+			error_message(data, "not found\n");
+		}
+	}
 }
-
 /**
  * path_finder - Find the executable file in the specified paths.
  * @data: Pointer to the shell_data structure.
