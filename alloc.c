@@ -76,12 +76,12 @@ void *alloc(void *ptr, unsigned int used_s, unsigned int given_s)
  * @data: Pointer to the shell_data structure.
  * By Kidus Yohannes and Petros worku.
  */
-void data_free(shell_data *data,int comb)
+void data_free(shell_data *data, int comb)
 {
 	free_strings(data->argu_val);
 	data->argu_val = NULL;
 	data->path = NULL;
-	
+
 	if (comb)
 	{
 		if (!data->command_buffer)
