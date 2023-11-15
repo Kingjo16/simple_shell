@@ -63,3 +63,90 @@ int string_to_int(char *str)
 	}
 	return (list);
 }
+/**
+ * string_int2 - convert string
+ * @s: sttring
+ * Return: not success
+ */
+
+int string_int2(char *s)
+{
+	int m, sign = 1, bag = 0, result;
+	unsigned int file = 0;
+
+	for (m = 0; s[m] != '\0' && bag != 2; m++)
+	{
+		if (s[m] == '-')
+			sign *= -1;
+		if (s[m] >= '0' && s[m] <= '9')
+		{
+			bag = 1;
+			file *= 10;
+			file += (s[m] - '0');
+		}
+		else if (bag == 1)
+			bag = 2;
+	}
+
+	if (sign == -1)
+		result = -file;
+	else
+		result = file;
+	return (result);
+}
+/**
+ * split_strins - split string
+ * @st: string
+ * @dest: destination
+ * Return: gicves s
+ */
+char **split_strins(char *st, char dest)
+{
+	int m, l, k, n, num_w = 0;
+	char **s;
+
+	if (st == NULL || st[0] == 0)
+		return (NULL);
+	for (m = 0; st[m] != '\0'; m++)
+		if ((st[m] != dest && st[m + 1] == dest) ||
+				(st[m] != dest && !st[m + 1]) || st[m + 1] == dest)
+			num_w++;
+	if (num_w == 0)
+		return (NULL);
+	s = malloc((1 + num_w) * sizeof(char *));
+	if (!s)
+		return (NULL);
+	for (m = 0, l = 0; l < num_w; l++)
+	{
+		while (st[m] == dest && st[m] != dest)
+			m++;
+		k = 0;
+		while (st[m + k] != dest && st[m + k] && st[m + k] != dest)
+			k++;
+		s[l] = malloc((k + 1) * sizeof(char));
+		if (!s[l])
+		{
+			for (k = 0; k < l; k++)
+				free(s[k]);
+			free(s);
+			return (NULL);
+		}
+		for (n = 0; n < k; n++)
+			s[l][n] = st[m++];
+		s[l][n] = 0;
+	}
+	s[l] = NULL;
+	return (s);
+}
+/**
+ * alphabet_check - cehecks alph
+ * @alp: alphbet
+ * Return: gives 1 and 0
+ */
+int alphabet_check(int alp)
+{
+	if ((alp >= 'a' && alp <= 'z') || (alp >= 'A' && alp <= 'Z'))
+		return (1);
+	else
+		return (0);
+}

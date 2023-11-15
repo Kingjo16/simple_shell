@@ -169,6 +169,9 @@ int string_cmd_replace(char **replaced, char *new);
 
 char *number_base_con(long int num, int b, int flag);
 int string_to_int(char *str);
+int alphabet_check(int alp);
+char **split_strins(char *st, char dest);
+int string_int2(char *s);
 
 /* replacer.c */
 
