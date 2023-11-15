@@ -1,4 +1,12 @@
 #include "memory.h"
+/*
+ * add_node_at_start - statrtes a node
+ * @head: the  statty
+ * @str_t: string
+ * @place: holder
+ * Return: succcess
+ */
+
 node_list *add_node_at_start(node_list **head, const char *str_t, int place)
 {
 	node_list *new_n;
