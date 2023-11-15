@@ -46,12 +46,9 @@ node_list *find_node(node_list *knob, char  *fixer, char ch)
 		q = enter_here(knob->str_t, fixer);
 
 		if (q && ((ch == -1) || (*q == ch)))
-			{
 			return (knob);
-			}
-		}
-
 		knob = knob->next;
+	}
 	return (NULL);
 }
 /**
