@@ -29,12 +29,12 @@
 extern char **environ;
 
 /**
- * struct nodelist - Structure representing a node in a linked list
+ * struct nodelist - Linked list node
  * @str_t: Pointer to a string
- * @place: Integer representing the position or order of the node
- * @next: Pointer to the next node in the linked list
+ * @place: Integer representing node position/order
+ * @next: Pointer to the next node
  *
- * Description: This structure defines a node in a linked list.
+ * Desc: Defines a node in a linked list.
  */
 
 typedef struct nodelist
@@ -45,28 +45,29 @@ typedef struct nodelist
 } node_list;
 
 /**
- * struct shell_data - Structure representing data for a shell program
- * @argu: The main command argument
+ * struct shell_data - Shell program data
+ * @argu: Main command argument
  * @argu_val: Array of argument values
- * @path: The path of the command
- * @argu_count: The count of arguments
- * @check_line: Unsigned integer representing a line check
- * @num_error: The number of errors
- * @flag_count: The count of flags
- * @command_name: The name of the command
- * @envir: Pointer to a linked list for environment variables
- * @history: Pointer to a linked list for command history
- * @alias_t: Pointer to a linked list for aliases
+ * @path: Command path
+ * @argu_count: Count of arguments
+ * @check_line: Unsigned integer for line check
+ * @num_error: Number of errors
+ * @flag_count: Count of flags
+ * @command_name: Command name
+ * @envir: Pointer to env. variables linked list
+ * @history: Pointer to command history linked list
+ * @alias_t: Pointer to aliases linked list
  * @environ: Array of environment variables
- * @change_env: Flag indicating a change in environment
- * @status: The status of the shell
+ * @change_env: Flag for environment change
+ * @status: Shell status
  * @command_buffer: Array of command buffer strings
  * @command_type: Type of command
- * @readfile: Flag indicating reading from a file
+ * @readfile: Flag for reading from a file
  * @count_hist: Count of command history
  *
- * Description: This structure holds various data related to a shell program.
- */i
+ * Desc: Holds various data related to a shell program.
+ */
+
 typedef struct shell_data
 {
 	char *argu;
@@ -96,13 +97,12 @@ typedef struct shell_data
 	0, 0, 0}
 
 #define FLUSH -1
-
 /**
- * struct builtedfun - Structure representing a built-in shell function
- * @type: The type or name of the built-in function
- * @bfun: Pointer to the function implementing the built-in functionality
+ * struct builtedfun - Built-in function association
+ * @type: Type or name of the built-in function
+ * @bfun: Pointer to the built-in function implementation
  *
- * Description: This structure associates a built-in function type with its
+ * Desc: Associates a built-in function type with its
  * corresponding function pointer for a shell program.
  */
 typedef struct builtedfun
