@@ -92,8 +92,8 @@ void data_free(shell_data *data, int comb)
 			node_free(&(data->history));
 		if (data->alias_t)
 			node_free(&(data->alias_t));
-		free_strings(data->env_n);
-		data->env_n = NULL;
+		free_strings(data->environ);
+		data->environ = NULL;
 		ptr_free((void **)data->command_buffer);
 		if (data->readfile > 2)
 			close(data->readfile);

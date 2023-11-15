@@ -23,11 +23,8 @@ void find_executable(shell_data *data)
 		return;
 
 	path = path_finder(data, env_check(data, "PATH="), data->argu_val[0]);
-<<<<<<< HEAD
-	if (path_var)
-=======
        if (path)
->>>>>>> 4b3b255364dc39dbf30b3edb91296f6b05cb561c
+
        {
 	       data->path = path;
 	       fork_and_exec(data);

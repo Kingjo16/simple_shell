@@ -9,7 +9,7 @@
  */
 int main(int argCount, char **argVal)
 {
-	shell_data data[] = {0};
+	shell_data data[] = { INFORMATION_INITIALIZE };
 	int file_dis = 2;
 
 	asm ("mov %1, %0\n\t"
@@ -36,11 +36,13 @@ int main(int argCount, char **argVal)
 				exit(127);
 			}
 
-			return (FAILURE);
+			return (EXIT_FAILURE);
 
 		}
 		data->readfile = file_dis;
 	}
+	build_environment_variable_list(data);
+	load_history(data);
 	run_shell(data, argVal);
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -15,8 +15,6 @@
 
 #define BUFFER_SIZES 1024
 #define MAX_BUFFER_SIZE 1024
-#define SUCCESS 0
-#define FAILURE 1
 
 #define ENTERANCE	0
 
@@ -27,7 +25,8 @@
 #define OR_COMMAND	1
 #define AND_COMMAND	2
 #define CHAIN_COMMAND	3
-
+#define HISTORY_MAX	4096
+extern char **environ;
 
 typedef struct nodelist
 {
@@ -49,9 +48,8 @@ typedef struct shell_data
 	char *command_name;
 	node_list *envir;
 	node_list *history;
-	node_list *other_a;
 	node_list *alias_t;
-	char **env_n;
+	char **environ;
 	int change_env;
 	int status;
 
@@ -62,7 +60,9 @@ typedef struct shell_data
 
 } shell_data;
 
-#define INFORMATION_INITIALIZE {0}
+#define INFORMATION_INITIALIZE \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
 
 #define FLUSH -1
 
@@ -209,5 +209,9 @@ char **get_environment_variables(shell_data *data);
 char **string_list(node_list *head);
 size_t node_length(const node_list *head);
 
+/* environment.c */
+
+int build_environment_variable_list(shell_data *data);
+int load_history(shell_data *data);
 
 #endif

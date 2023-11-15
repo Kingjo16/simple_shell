@@ -1,11 +1,10 @@
 #include "memory.h"
-<<<<<<< HEAD
 /**
- * fork_and_exec - Fork a child process and execute a command.
- * @data: Pointer to the shell_data structure.
+ * node_length - Get the number of nodes in a linked list.
+ * @head: Pointer to the head of the linked list.
+ * Return: Number of nodes in the linked list.
  * By Kidus Yohannes and Petros Worku.
  */
-=======
 size_t node_length(const node_list *head)
 {
         size_t m = 0;
@@ -17,8 +16,11 @@ size_t node_length(const node_list *head)
         }
         return (m);
 }
-
->>>>>>> 4b3b255364dc39dbf30b3edb91296f6b05cb561c
+/**
+ * fork_and_exec - Fork a child process and execute a command.
+ * @data: Pointer to the shell_data structure.
+ * By Kidus Yohannes and Petros Worku.
+ */
 void fork_and_exec(shell_data *data)
 {
 	pid_t child_process_id;
@@ -60,12 +62,12 @@ void fork_and_exec(shell_data *data)
  */
 char **get_environment_variables(shell_data *data)
 {
-	if (!data->env_n || data->change_env)
+	if (!data->environ || data->change_env)
 	{
-		data->env_n = string_list(data->envir);
+		data->environ = string_list(data->envir);
 		data->change_env = 0;
 	}
-	return (data->env_n);
+	return (data->environ);
 }
 
 /**
@@ -100,20 +102,4 @@ char **string_list(node_list *head)
        }
 	       str_s[m] = NULL;
 	       return (str_s);
-<<<<<<< HEAD
 }
-
-/**
- * node_length - Get the number of nodes in a linked list.
- * @head: Pointer to the head of the linked list.
- * Return: Number of nodes in the linked list.
- * By Kidus Yohannes and Petros Worku.
- */
-size_t node_length(const node_list *head)
-{
-	size_t m = 0;
-=======
->>>>>>> 4b3b255364dc39dbf30b3edb91296f6b05cb561c
-
-}
-
