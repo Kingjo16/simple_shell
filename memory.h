@@ -28,6 +28,15 @@
 #define HISTORY_MAX	4096
 extern char **environ;
 
+/**
+ * struct nodelist - Structure representing a node in a linked list
+ * @str_t: Pointer to a string
+ * @place: Integer representing the position or order of the node
+ * @next: Pointer to the next node in the linked list
+ *
+ * Description: This structure defines a node in a linked list.
+ */
+
 typedef struct nodelist
 {
 	char *str_t;
@@ -35,7 +44,29 @@ typedef struct nodelist
 	struct nodelist *next;
 } node_list;
 
-
+/**
+ * struct shell_data - Structure representing data for a shell program
+ * @argu: The main command argument
+ * @argu_val: Array of argument values
+ * @path: The path of the command
+ * @argu_count: The count of arguments
+ * @check_line: Unsigned integer representing a line check
+ * @num_error: The number of errors
+ * @flag_count: The count of flags
+ * @command_name: The name of the command
+ * @envir: Pointer to a linked list for environment variables
+ * @history: Pointer to a linked list for command history
+ * @alias_t: Pointer to a linked list for aliases
+ * @environ: Array of environment variables
+ * @change_env: Flag indicating a change in environment
+ * @status: The status of the shell
+ * @command_buffer: Array of command buffer strings
+ * @command_type: Type of command
+ * @readfile: Flag indicating reading from a file
+ * @count_hist: Count of command history
+ *
+ * Description: This structure holds various data related to a shell program.
+ */i
 typedef struct shell_data
 {
 	char *argu;
@@ -66,6 +97,14 @@ typedef struct shell_data
 
 #define FLUSH -1
 
+/**
+ * struct builtedfun - Structure representing a built-in shell function
+ * @type: The type or name of the built-in function
+ * @bfun: Pointer to the function implementing the built-in functionality
+ *
+ * Description: This structure associates a built-in function type with its
+ * corresponding function pointer for a shell program.
+ */
 typedef struct builtedfun
 {
 	char *type;
@@ -86,7 +125,7 @@ int builtin_cmd(shell_data *data);
 
 /* string_man.c */
 
-char *str_copy(char *destination,char *stringc);
+char *str_copy(char *destination, char *stringc);
 char *str_dup(const char *string);
 void _prints(char *string);
 int _printchar(char character);
@@ -96,7 +135,7 @@ int _printchar(char character);
 char *mem_set(char *string, char c, unsigned int num);
 void free_strings(char **strings);
 void *alloc(void *ptr, unsigned int used_s, unsigned int given_s);
-void data_free(shell_data *data,int comb);
+void data_free(shell_data *data, int comb);
 void node_free(node_list **ptr);
 
 /* cahr_exitsearch.c */
@@ -116,7 +155,7 @@ void comment_rm(char *buffer);
 /* getinput1.c */
 
 ssize_t find_input(shell_data *data);
-void check_com_chain(shell_data *data,char *b, size_t *q, size_t m, size_t d);
+void check_com_chain(shell_data *data, char *b, size_t *q, size_t m, size_t d);
 int command_chain(shell_data *data, char *buffer, size_t *q);
 int str_length(char *string);
 
@@ -144,7 +183,7 @@ int cmd_var_replace(shell_data *data);
 int length_str(char *string);
 int compar_str(char *o_ne, char *t_wo);
 char *cat_str(char *buf, char *sour);
-char *_starting(const char *bags,const char *smaller);
+char *_starting(const char *bags, const char *smaller);
 
 /* alias_here.c */
 
