@@ -110,7 +110,7 @@ int help_center(shell_data *data)
 	char **given_a;
 
 	given_a = data->argu_val;
-	_prints("help call works.FUunction not yet implemented \n");
+	_prints("help call works. Function not yet implemented \n");
 	if (0)
 		_prints(*given_a);
 	return (0);

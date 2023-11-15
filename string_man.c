@@ -35,7 +35,7 @@ char *str_dup(const char *string)
 	int len = 0;
 	char *net;
 
-	if (!string)
+	if (string == NULL)
 		return (NULL);
 	while (*string++)
 		len++;
@@ -77,9 +77,9 @@ int _printchar(char character)
 {
 
 	static int m;
-	static char buffer[BUFFER_SIZES];
+	static char buffer[MAX_BUFFER_SIZE];
 
-	if (character == FLUSH || m >= BUFFER_SIZES)
+	if (character == FLUSH || m >= MAX_BUFFER_SIZE)
 	{
 		write(1, buffer, m);
 		m = 0;
